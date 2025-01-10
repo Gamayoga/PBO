@@ -200,7 +200,7 @@ public class MinesweeperGame {
         }
 
         try {
-            File file = new File("./audio/explosion.wav");
+            File file = new File("explosion.wav");
             AudioInputStream stream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(stream);
