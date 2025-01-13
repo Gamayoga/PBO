@@ -11,14 +11,32 @@ import javax.sound.sampled.Clip;
 
 public class MinesweeperGame {
     private static class GridTile extends JButton {
-        int r;
-        int c;
+        private int r;
+        private int c;
+
+        public int getR() {
+            return r;
+        }
+
+        public void setR(int r) {
+            this.r = r;
+        }
+
+        public int getC() {
+            return c;
+        }
+
+        public void setC(int c) {
+            this.c = c;
+        }
 
         public GridTile(int r, int c) {
             this.r = r;
             this.c = c;
+
         }
     }
+
 
     enum Level {
         EASY(8, 8, 10, 70, 30),
@@ -131,7 +149,7 @@ public class MinesweeperGame {
                                 if (mineList.contains(tile)) {
                                     revealMines();
                                 } else {
-                                    checkMine(tile.r, tile.c);
+                                    checkMine(tile.getR(), tile.getC());
                                 }
                             }
                         } else if (e.getButton() == MouseEvent.BUTTON3) {
@@ -200,7 +218,7 @@ public class MinesweeperGame {
         }
 
         try {
-            File file = new File("explosion.wav");
+            File file = new File("./audio/explosion.wav");
             AudioInputStream stream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(stream);
